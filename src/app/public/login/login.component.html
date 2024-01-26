@@ -1,0 +1,78 @@
+<div class="row">
+    <div id="login" class="col-12 col-md-6 col-lg-5">
+        <label class="display-3 mb-4">
+            Iniciar sesión
+        </label>
+        <hr>
+        <form class="mt-5" [formGroup]="loginForm">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">
+                    Correo electrónico
+                </label>
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" formControlName="email">
+                <div id="emailHelp" class="form-text text-danger">
+                   	<div>
+                        <span *ngIf="loginForm.controls['email'].errors?.['required']">
+                            El correo electrónico es requerido
+                        </span>
+                        <span *ngIf="loginForm.controls['email'].errors?.['email']">
+                            El correo electrónico no es válido
+                        </span>
+                        <span *ngIf="loginForm.controls['email'].errors?.['minlength']">
+                            La contraseña elegida es débil
+                        </span>
+                        <span *ngIf="loginForm.controls['email'].errors?.['maxlength']">
+                           Su contraseña es muy extensa
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">
+                    Contraseña
+                </label>
+                <input type="password" class="form-control" id="exampleInputPassword1" formControlName="password">
+                <div id="passwordHelp" class="form-text text-danger">
+                    <div>
+                     <span *ngIf="loginForm.controls['password'].errors?.['required']">
+                         La contraseña es requerida
+                     </span>
+                     <span *ngIf="loginForm.controls['password'].value!= '' && !loginForm.controls['password'].errors?.['forbiddenPass']">
+                        Debe tener minúscula, mayúscula, dígito y carácter especial
+                     </span>
+                     <span *ngIf="loginForm.controls['password'].errors?.['minlength']">
+                        La contraseña elegida es demasiado corta
+                     </span>
+                     <span *ngIf="loginForm.controls['password'].errors?.['maxlength']">
+                        Su contraseña es muy extensa
+                     </span>
+                     <span *ngIf="loginForm.controls['password'].errors?.['invalidCredentials']">
+                        Contraseña o email equivocados
+                     </span>
+                 </div>
+             </div>
+             </div>
+
+            <button class="btn btn-primary btn-lg w-100" (click)="onSubmit()">
+                Entrar
+            </button>
+
+
+            <!-- <pre>
+                ----Comentar----
+                El formulario tiene que ser reactivo
+                Los elementos los tendrás que convertir en componentes standalone
+                La configuración del formulario provendra de un json, las propiedades te las dejaré a tu criterio, pero tendra que contener al menos
+                    *validaciones -> del tipo longitud minima, maxima, patrones de expresiones regulares
+                    *mensajes de error configurable por tipo de validación agregada
+                    *metadatos ->  del tipo longitud minima, maxima, requerido, deshabilitado
+                Al click en el botón entrar este validará si el formulario reactivo cumple con dichas validaciones y este redireccionara a la ruta configurada en la función
+                El usuario sera cualquier email y a contraseña sera harcodeada a 123abc
+
+
+                Conservar el estado aun cuando la página se refresque
+                Cuando cierre la página el estado ya no debe persistir, solamente cuando inicie sesion
+            </pre> -->
+        </form>
+    </div>
+</div>

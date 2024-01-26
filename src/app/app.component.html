@@ -1,0 +1,99 @@
+<main class="container">
+  <router-outlet></router-outlet>
+</main>
+
+<pre>
+  Crear componentes standalone
+  Los componentes que digan conservación de estado estos deberán conservar el estado cuando se realice una busqueda o se llame al paginador
+  Puedes modificar, crear todos los archivos o carpetas
+  La estructura de carpetas te las dejo a tu criterio
+  No instalar ningún plugin
+  Las rutas tendrán lazy loading y puedes crear tantas como quieras
+  Todos los componentes serán standalone y tendrán ChangeDetectionStrategy.OnPush
+  La rutas privadas solo serán accesibles si se inicia sesion
+
+
+
+</pre>
+
+<pre>
+  Loading
+    Cada que se realice un llamado a cualquier servicio se debera lanzar un loader por encima, hasta que termine el servicio ya sea que retorne un error o no, el loader se debe apagar
+    En caso de mandar un error el servicio, se debera mostrar un modal en el error que retorna el servicio
+
+
+  
+</pre>
+
+<pre>
+  Buscador de peliculas
+    Debe llamar al servicio cuando deje de escribir
+
+
+  
+</pre>
+
+<pre>
+  Crear slider no utilizar plugins
+    La ruta del servicio a utilizar sera -> URITrending
+    Sliders a mostrar configurable
+    Configurable si tiene autoplay
+    Configurable si se muestran dots
+    Configurable si se muestran las flechas para pasar de slider siguiente o atras
+    Slider infinito si llego al maximo se debe de pasar al principio
+    Los dots mostraran el grupo de imagenes en la que se encuentran; es decir; si existen 10 imágenes y se estan mostrando de 3 en 3, entonces los dots a mostrar seran 4
+
+
+  
+</pre>
+
+<pre>
+  Listado de peliculas consumiras el servicio para mostrar dichas peliculas
+    La ruta del servicio a utilizar sera -> URINowPlaying
+    El card de peliculas tiene 2 vistas, una al hover y otra al no hover, dejo comentario de que vista se debe renderizar
+
+
+  
+</pre>
+
+<pre>
+  Paginador, no utilizar plugins
+    Numero de paginas a mostrar configurable
+    Configurable si deseo mostrar u ocultar pagina siguiente o pagina atras a su ves tambien seria configurable la
+    etiqueta a mostrar
+    La pagina activa siempre se debe mostrar en medio en caso de que se pueda es decir:
+    configure que solo se muestren 3 paginas y si estoy en la pagina 3 y existen 5 páginas las paginas a mostrar
+    seria 2 3(activa) 4, si me muevo a la pagina 4 se debe mostrar 3 4(activa) 5, si me muevo a la siguiente página
+    se pintarian 3 4 5(activa)
+
+
+  
+</pre>
+
+<pre>
+  Detalle de la pelicula
+    Al click de la card del listado o del slider se deberá de mostrar el detalle de la pelicula en una nueva ruta
+    El criterio a mostrar los datos te lo dejo a tu concideración
+    Cuando se entre a esta ruta en el header se debe ocultar el buscardor y mostrar en su caso un botón con la leyenda regresar
+    Se deberá mostrar un breadcrum debajo del header cuando se entre al detalle de la película y será funcional al click
+    Sí la película no existe se debera mostrar la pagina notFound 404
+
+
+  
+</pre>
+
+<pre>
+  Página no encontrada
+    En caso de no existir la página debera mostrar la pagina 404
+    Te dejo el criterio del diseño a mostrar
+
+
+  
+</pre>
+
+<pre>
+  En el archivo en service/api.service
+
+    Deberas crear el metodo para consumir el endpoint correspondiente.
+    Deberas crear una cuenta de desarrollador en https://www.themoviedb.org/ para generar la apikey
+</pre>

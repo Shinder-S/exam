@@ -1,0 +1,394 @@
+<div class="row mb-4">
+    <div class="col">
+        <div class="row mb-5">
+            <div class="col">
+                <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                    <div class="container-fluid">
+                        <h1>
+                            Bienvenido {{ this.user.userName }}
+                        </h1>
+                        <a class="navbar-brand" routerLink="/">
+                            Movies
+                        </a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <div class="navbar-nav me-auto mb-2 mb-lg-0">
+                                {{ this.user.userName }}
+                            </div>
+                            <form class="d-flex" role="search">
+                                <input class="form-control me-2" type="search" placeholder="Buscador..."
+                                    aria-label="Search">
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>      
+
+        <div class="row slider">
+            <!-- Slider de peliculas trending, al click debera de ir al detalle -->
+
+            <div class="col">
+                <div class="row mb-2 gx-2 d-flex flex-row " *ngFor="let movie of trendingMovies">
+                    <div class="col">
+                        <picture>
+                            <img src="/assets/images/image-default.jpg" alt="imagen-default" class="w-100">
+                        </picture>
+                        <div>{{movie.title}}</div>
+                    </div>
+                </div>
+                   
+                
+                <div class="row dots gx-2 d-flex flex-row justify-content-center">
+                    <div class="col dot active"></div>
+                    <div class="col dot"></div>
+                    <div class="col dot"></div>
+                    <div class="col dot"></div>
+                    <div class="col dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+            <div class="col d-flex justify-content-end">
+                <span>
+                    Total de peliculas encontradas: 20 de 1,234
+                </span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12 col-md-4 col-lg-3 d-flex flex-column py-3">
+                <div class="card p-3 movie-new">
+                    <!-- La clase movie-new sera injectada cuando la fecha de lanzamiento se encuentre sea menos a 15 dias de la fecha actual o que la fecha de lanzamiento sea mayor a la fecha actual -->
+                    <div class="card-front d-none">
+                        <!-- Al hover de card -> card-front ya no sea renderizado en el front, al inspeccionar en el navegador no debe estar renderizado -->
+                        <!-- cuando card ya no este al hover del mouse este elemento ya no sera renderizado en el navegador -->
+                        <picture class="mb-2">
+                            <img src="/assets/images/image-default.jpg" alt="imagen-default" class="w-100">
+                        </picture>
+                        <div class="d-flex flex-column mt-2">
+                            <h3>
+                                [title]
+                            </h3>
+                            <small class="w-100">
+                                [Géneros]
+                            </small>
+                        </div>
+                    </div>
+                    <div class="card-hover d-flex flex-column">
+                        <!-- Al hover de card -> card-hover se renderize en el front, al inspeccionar en el navegador no debe estar renderizado -->
+                        <!-- cuando card ya no este al hover del mouse -> este elemento ya no sera renderizado en el navegador -->
+                        <h3>
+                            [title]
+                        </h3>
+                        <small class="w-100 pb-2">
+                            [Géneros]
+                        </small>
+                        <p>
+                            [Descripción]
+                        </p>
+                        <div class="d-flex flex-row justify-content-between">
+                            <span>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                [Puntuación]
+                            </span>
+                            <span>
+                                [Fecha lanzamiento]
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 d-flex flex-column py-3">
+                <div class="card p-3">
+                    <div class="card-front">
+                        <picture class="mb-3">
+                            <img src="/assets/images/image-default-2.jpg" alt="imagen-default" class="w-100">
+                        </picture>
+                        <div class="d-flex flex-column mt-2">
+                            <h3>
+                                [title]
+                            </h3>
+                            <small>
+                                [Géneros]
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover d-flex flex-column d-none">
+                    <h3>
+                        [title]
+                    </h3>
+                    <small class="w-100 pb-2">
+                        [Géneros]
+                    </small>
+                    <p>
+                        [Descripción]
+                    </p>
+                    <div class="d-flex flex-row justify-content-between">
+                        <span>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            [Puntuación]
+                        </span>
+                        <span>
+                            [Fecha lanzamiento]
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="col-12 col-md-4 col-lg-3 d-flex flex-column py-3">
+                <div class="card p-3 movie-new">
+                    <div class="card-front d-none">
+                        <picture class="mb-2">
+                            <img src="/assets/images/image-default.jpg" alt="imagen-default" class="w-100">
+                        </picture>
+                        <div class="d-flex flex-column mt-2">
+                            <h3>
+                                [title]
+                            </h3>
+                            <small class="w-100">
+                                [Géneros]
+                            </small>
+                        </div>
+                    </div>
+                    <div class="card-hover d-flex flex-column">
+                        <h3>
+                            [title]
+                        </h3>
+                        <small class="w-100 pb-2">
+                            [Géneros]
+                        </small>
+                        <p>
+                            [Descripción]
+                        </p>
+                        <div class="d-flex flex-row justify-content-between">
+                            <span>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                [Puntuación]
+                            </span>
+                            <span>
+                                [Fecha lanzamiento]
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 d-flex flex-column py-3">
+                <div class="card p-3">
+                    <div class="card-front">
+                        <picture class="mb-3">
+                            <img src="/assets/images/image-default-2.jpg" alt="imagen-default" class="w-100">
+                        </picture>
+                        <div class="d-flex flex-column mt-2">
+                            <h3>
+                                [title]
+                            </h3>
+                            <small>
+                                [Géneros]
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover d-flex flex-column d-none">
+                    <h3>
+                        [title]
+                    </h3>
+                    <small class="w-100 pb-2">
+                        [Géneros]
+                    </small>
+                    <p>
+                        [Descripción]
+                    </p>
+                    <div class="d-flex flex-row justify-content-between">
+                        <span>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            [Puntuación]
+                        </span>
+                        <span>
+                            [Fecha lanzamiento]
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 d-flex flex-column py-3">
+                <div class="card p-3 movie-new">
+                    <div class="card-front d-none">
+                        <picture class="mb-2">
+                            <img src="/assets/images/image-default.jpg" alt="imagen-default" class="w-100">
+                        </picture>
+                        <div class="d-flex flex-column mt-2">
+                            <h3>
+                                [title]
+                            </h3>
+                            <small class="w-100">
+                                [Géneros]
+                            </small>
+                        </div>
+                    </div>
+                    <div class="card-hover d-flex flex-column">
+                        <h3>
+                            [title]
+                        </h3>
+                        <small class="w-100 pb-2">
+                            [Géneros]
+                        </small>
+                        <p>
+                            [Descripción]
+                        </p>
+                        <div class="d-flex flex-row justify-content-between">
+                            <span>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                [Puntuación]
+                            </span>
+                            <span>
+                                [Fecha lanzamiento]
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 d-flex flex-column py-3">
+                <div class="card p-3">
+                    <div class="card-front">
+                        <picture class="mb-3">
+                            <img src="/assets/images/image-default-2.jpg" alt="imagen-default" class="w-100">
+                        </picture>
+                        <div class="d-flex flex-column mt-2">
+                            <h3>
+                                [title]
+                            </h3>
+                            <small>
+                                [Géneros]
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover d-flex flex-column d-none">
+                    <h3>
+                        [title]
+                    </h3>
+                    <small class="w-100 pb-2">
+                        [Géneros]
+                    </small>
+                    <p>
+                        [Descripción]
+                    </p>
+                    <div class="d-flex flex-row justify-content-between">
+                        <span>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            [Puntuación]
+                        </span>
+                        <span>
+                            [Fecha lanzamiento]
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 d-flex flex-column py-3">
+                <div class="card p-3 movie-new">
+                    <div class="card-front d-none">
+                        <picture class="mb-2">
+                            <img src="/assets/images/image-default.jpg" alt="imagen-default" class="w-100">
+                        </picture>
+                        <div class="d-flex flex-column mt-2">
+                            <h3>
+                                [title]
+                            </h3>
+                            <small class="w-100">
+                                [Géneros]
+                            </small>
+                        </div>
+                    </div>
+                    <div class="card-hover d-flex flex-column">
+                        <h3>
+                            [title]
+                        </h3>
+                        <small class="w-100 pb-2">
+                            [Géneros]
+                        </small>
+                        <p>
+                            [Descripción]
+                        </p>
+                        <div class="d-flex flex-row justify-content-between">
+                            <span>
+                                <i class="bi bi-star-fill text-warning"></i>
+                                [Puntuación]
+                            </span>
+                            <span>
+                                [Fecha lanzamiento]
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-4 col-lg-3 d-flex flex-column py-3">
+                <div class="card p-3">
+                    <div class="card-front">
+                        <picture class="mb-3">
+                            <img src="/assets/images/image-default-2.jpg" alt="imagen-default" class="w-100">
+                        </picture>
+                        <div class="d-flex flex-column mt-2">
+                            <h3>
+                                [title]
+                            </h3>
+                            <small>
+                                [Géneros]
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-hover d-flex flex-column d-none">
+                    <h3>
+                        [title]
+                    </h3>
+                    <small class="w-100 pb-2">
+                        [Géneros]
+                    </small>
+                    <p>
+                        [Descripción]
+                    </p>
+                    <div class="d-flex flex-row justify-content-between">
+                        <span>
+                            <i class="bi bi-star-fill text-warning"></i>
+                            [Puntuación]
+                        </span>
+                        <span>
+                            [Fecha lanzamiento]
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row mt-4">
+            <div class="col-12 d-flex flex-row align-items-center justify-content-between">
+                <nav aria-label="Page navigation d-flex">
+                    <ul class="pagination justify-content-center m-0">
+                        <li class="page-item disabled">
+                            <a class="page-link">Previous</a>
+                        </li>
+                        <li class="page-item"><a class="page-link active" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+                </nav>
+                <span>
+                    Total de peliculas encontradas: 20 de 1,234
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
