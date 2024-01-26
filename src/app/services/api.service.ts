@@ -35,4 +35,22 @@ export class ApiService {
     
     return this.http.get(this.URLBase + this.URITrending + '?api_key=' + this.apikey + '&language=en-US')
   }
+
+  getGenders(){
+    return this.http.get(this.URLBase + this.URIGenderMovies + '?api_key=' + this.apikey + '&language=en-US')
+    
+  }
+
+  getMovie(id:any){
+    return this.http.get(this.URLBase + this.URIMovie + '/' + id + '?api_key=' + this.apikey + '&language=en-US')
+  }
+
+  //getMovies its a methetos that needs to get the movies paginated
+
+  getMovies(pageNumber: number){
+    return this.http.get(this.URLBase + this.URIMovie + this.URINowPlaying + '?api_key=' + this.apikey + '&language=en-US&page=' + pageNumber)
+  }
+  
+
+
 }
