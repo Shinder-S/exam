@@ -9,7 +9,7 @@ export class ApiAuthService {
 
         //backend call
 
-        return email == 'a' && password == 'a'
+        return email == 'test@gmail.com' && password == '/Asd1@'
     }
 
 }

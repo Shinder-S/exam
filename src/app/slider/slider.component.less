@@ -1,0 +1,35 @@
+.slider-container {
+    overflow-x: hidden;
+    white-space: nowrap;
+}
+
+.slider {
+display: flex;
+}
+
+.slide {
+flex: 0 0 auto;
+width: 300px; 
+margin-right: 20px;
+}
+
+.slide img {
+width: 100%; 
+}
+
+.slider {
+    .dots {
+        .dot {
+            width: 10px;
+            height: 10px;
+            flex: none;
+            margin: 0 1rem;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.209);
+
+            &.active {
+                background-color: rgba(242, 30, 30, 0.807);
+            }
+        }
+    }
+}

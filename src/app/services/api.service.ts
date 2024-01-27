@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders
+import { HttpClient, HttpHeaders, HttpParams
  } from '@angular/common/http';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -32,8 +33,13 @@ export class ApiService {
     return this.http.get(this.URLBase + this.URIGenderMovies)
   }
   getTrendingMovies(){
-    
-    return this.http.get(this.URLBase + this.URITrending + '?api_key=' + this.apikey + '&language=en-US')
+    let subject = new Subject()
+    let params = new HttpParams().set('api_key', this.apikey)
+                                  .set('language', 'en-US')
+    this.http.get(this.URLBase + this.URITrending, { params }).subscribe(res=> {
+      subject.next(res)
+    })
+    return subject.asObservable()
   }
 
   getGenders(){

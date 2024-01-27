@@ -4,17 +4,16 @@ import { RouterOutlet } from '@angular/router';
 import { StorageService } from '@/services/storage/storage.service';
 import { ApiService } from '@/services/api.service';
 import { SliderComponent } from "../slider/slider.component";
-import { MainComponent } from "../main/main.component";
 
 @Component({
-    selector: 'app-layout',
+    selector: 'app-main',
     standalone: true,
-    templateUrl: './layout.component.html',
-    styleUrls: ['./layout.component.less'],
+    templateUrl: './main.component.html',
+    styleUrls: ['./main.component.less'],
     providers: [StorageService, ApiService],
-    imports: [CommonModule, RouterOutlet, SliderComponent, MainComponent]
+    imports: [CommonModule, RouterOutlet, SliderComponent]
 })
-export class LayoutComponent implements OnInit {
+export class MainComponent implements OnInit {
   currentPag: number = 1
   movieDetails: any
   movies: any
@@ -97,42 +96,6 @@ export class LayoutComponent implements OnInit {
     }
   }
 
-  nextPag(){
-    if(this.currentPag < this.lastPage){
-      this.currentPag++
-      this.apiService.getMovies(this.currentPag).subscribe(
-        {
-          next: (data: any) => {
-            console.log(data)
-            this.movies = data.results
-            this.cdRef.detectChanges()
-          },
-          error: err => {
-            console.log(err)
-          }
-        }
-      )
-    }
-  }
-
-  prevPag(){
-    if(this.currentPag > 1){
-      this.currentPag--
-      this.apiService.getMovies(this.currentPag).subscribe(
-        {
-          next: (data: any) => {
-            console.log(data)
-            this.movies = data.results
-            this.cdRef.detectChanges()
-          },
-          error: err => {
-            console.log(err)
-          }
-        }
-      )
-    }
-  }
-
   getDetails(movieId: any){
     this.apiService.getMovie(movieId).subscribe(
       {
@@ -146,7 +109,5 @@ export class LayoutComponent implements OnInit {
       }
     )
   }
-
- 
     
 }

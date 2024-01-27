@@ -27,29 +27,9 @@
                     </div>
                 </nav>
             </div>
-        </div>      
+        </div>     
 
-        <div class="row slider">
-            <div class="col">
-                <div class="row mb-2 gx-2 d-flex flex-row " *ngFor="let movie of trendingMovies">
-                    <div class="col" #trending [id]="movie.id" (click)="getDetails(trending.id)">
-                        <picture>
-                            <img src="/assets/images/image-default.jpg" alt="imagen-default" class="w-100">
-                        </picture>
-                        <div>{{movie.title}}</div>
-                    </div>
-                </div>
-                   
-                
-                <div class="row dots gx-2 d-flex flex-row justify-content-center">
-                    <div class="col dot active"></div>
-                    <div class="col dot"></div>
-                    <div class="col dot"></div>
-                    <div class="col dot"></div>
-                    <div class="col dot"></div>
-                </div>
-            </div>
-        </div>
+        <app-slider></app-slider>
 
         <hr>
 
@@ -61,64 +41,8 @@
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-12 col-md-4 col-lg-3 d-flex flex-column py-3" *ngFor="let movie of movies">
-                <div class="card p-3 movie-new">
-                    <!-- La clase movie-new sera injectada cuando la fecha de lanzamiento se encuentre sea menos a 15 dias de la fecha actual o que la fecha de lanzamiento sea mayor a la fecha actual -->
-                    <div 
-                        class="card-front" 
-                        [id]="movie.id" 
-                        #front 
-                        (mouseenter)="movie.hover=true"
-                        
-                        *ngIf="!movie.hover"
-                    >
-                        <!-- Al hover de card -> card-front ya no sea renderizado en el front, al inspeccionar en el navegador no debe estar renderizado -->
-                        <!-- cuando card ya no este al hover del mouse este elemento ya no sera renderizado en el navegador -->
-                        <picture class="mb-2">
-                            <img src="/assets/images/image-default-2.jpg" alt="imagen-default" class="w-100">
-                        </picture>
-                        <div class="d-flex flex-column mt-2">
-                            <h3>
-                                {{movie.title}}
-                            </h3>
-                            <small class="w-100">
-                                [Géneros]
-                            </small>
-                        </div>
-                    </div>
-                  
-                    <div  class="card-hover d-flex flex-column" *ngIf="movie.hover"  (mouseleave)="movie.hover=false">
-                     
-                        <!-- Al hover de card -> card-hover se renderize en el front, al inspeccionar en el navegador no debe estar renderizado -->
-                        <!-- cuando card ya no este al hover del mouse -> este elemento ya no sera renderizado en el navegador -->
-                        <h3>
-                            {{movie.title}}
-                        </h3>
-                        <small class="w-100 pb-2">
-                            [Géneros]
-                        </small>
-                        <p>
-                            {{movie.overview}}
-                        </p>
-                        <div class="d-flex flex-row justify-content-between">
-                            <span>
-                                <i class="bi bi-star-fill text-warning"></i>
-                                {{movie.average}}
-                            </span>
-                            <span>
-                                {{movie.release_date}}
-                            </span>
-                        </div>
-                    </div>
-                                    
-                                    
-            </div>    
-        </div>
-            
-           
-        </div>
-        <hr>
+        <app-main></app-main>
+        
         <div class="row mt-4">
             <div class="col-12 d-flex flex-row align-items-center justify-content-between">
                 <nav aria-label="Page navigation d-flex">
