@@ -1,4 +1,4 @@
-import { Component, OnInit, ChangeDetectorRef, Input } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { StorageService } from '@/services/storage/storage.service';
@@ -13,69 +13,37 @@ import { SliderComponent } from "../slider/slider.component";
     providers: [StorageService, ApiService],
     imports: [CommonModule, RouterOutlet, SliderComponent]
 })
-export class MainComponent implements OnInit {
+export class MainComponent implements OnInit, OnChanges {
   currentPag: number = 1
   movieDetails: any
-  movies: any
+  @Input() data: Array<any> = []
+  movies: Array<any> = []
   genders: Array<any> = []
   totalMovies: number = 0
   lastPage: number = 0
   user: { userName: string, expiration: string} = { userName: '', expiration: ''}
   trendingMovies: Array<any> = []
   selectedTrending: number = 0  
-  constructor(
+  constructor( 
     private storage : StorageService,
     private apiService: ApiService,
     private cdRef: ChangeDetectorRef
-  ){ }
+  ){ 
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.data)
+    this.movies = this.data
+  }
 
   ngOnInit(): void {
-    this.user = this.storage.getStorage('session')
-
-    
-    this.apiService.getTrendingMovies().subscribe(
-      (res: any) => {
-        console.log(res)
-        this.trendingMovies = res.results
-      },
-      err => {
-        console.log(err)
-      }
-    )
-    this.apiService.getGenders().subscribe(
-      {
-        next: (gendersData: any) => {
-          this.genders = gendersData.genres
-          console.log(this.genders)
-          this.apiService.getMovies(1).subscribe(
-            {
-              next: (data: any) => {
-                console.log(data)
-                this.currentPag = 1
-                this.totalMovies = data.total_results
-                this.lastPage = data.total_pages
-                this.movies = data.results
-                this.setGender()
-                console.log(this.movies)
-                this.cdRef.detectChanges()
-                console.log(this.lastPage)
-                
-              },
-              error: err => {
-                console.log(err)
-              }
-            }
-          )
-
-        },
-        error: err => {
-          console.log(err)
-        }
-      }
-    )
-
-    
+    console.log(this.data)
   }
+
+
+  setMovies(event: any){
+    console.log(event)
+  }
+
 
 
   // setGender(){

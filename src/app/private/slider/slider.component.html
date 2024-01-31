@@ -1,0 +1,28 @@
+<div>
+    <div>
+        <button (click)="prevSlide()"><</button>
+        <div class="slider-container" #sliderContainer>
+            <div class="slider">
+                <div class="row mb-2 gx-2 d-flex flex-row slide col-3" *ngFor="let movie of trendingMovies">
+                    <div class="col" #trending [id]="movie.id" (click)="getSlides()">
+                        <picture>
+                            <img [src]="'https://image.tmdb.org/t/p/w500' + movie.poster_path"  alt="imagen-default" class="w-100">
+                        </picture>
+                        <div>{{movie.title}}</div>
+                    </div>
+                </div>    
+                
+            </div>
+        </div>
+        <button (click)="nextSlide()">></button>
+    </div>
+    <div>
+        <div class="row dots gx-2 d-flex flex-row justify-content-center">
+            <div class="col dot active"></div>
+            <div class="col dot"></div>
+            <div class="col dot"></div>
+            <div class="col dot"></div>
+            <div class="col dot"></div>
+        </div>
+    </div>
+</div>

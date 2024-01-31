@@ -1,0 +1,22 @@
+<div class="row mt-4">
+    <div class="col-12 d-flex flex-row align-items-center justify-content-between">
+        <nav aria-label="Page navigation d-flex">
+            <ul class="pagination justify-content-center m-0">
+                <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                </li>
+                <div  *ngFor="let id of [currentPage - 2,currentPage - 1, currentPage, currentPage + 1, currentPage + 2]">
+                    <li *ngIf="(id > 0) && (id < lastPage)" [id]="id" #item (click)="setCurrentPage(+item.id)" class="page-item" ><a class="page-link" [ngClass]="getCurrentPage() == +item.id ? 'active' : '' ">{{item.id}}</a></li>
+                </div>
+                <li class="page-item"><a class="page-link" (click)="setCurrentPage(currentPage+5)">...</a></li>
+                <li class="page-item"><a class="page-link" [id]="lastPage" (click)="setCurrentPage(lastPage)">{{lastPage}}</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                </li>
+            </ul>
+        </nav>
+        <span>
+            Total de peliculas encontradas: 20 de {{totalMovies}}
+        </span>
+    </div>
+</div>

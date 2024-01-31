@@ -54,7 +54,14 @@ export class ApiService {
   //getMovies its a methetos that needs to get the movies paginated
 
   getMovies(pageNumber: number){
-    return this.http.get(this.URLBase + this.URIMovie + this.URINowPlaying + '?api_key=' + this.apikey + '&language=en-US&page=' + pageNumber)
+    let subject = new Subject()
+    let params = new HttpParams().set('api_key', this.apikey)
+                                  .set('language', 'en-US')
+                                  .set('page', pageNumber)
+    this.http.get(this.URLBase + this.URIMovie + this.URINowPlaying, { params }).subscribe(res=> {
+      subject.next(res)
+    })
+    return subject.asObservable()
   }
   
 

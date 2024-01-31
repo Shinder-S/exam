@@ -1,6 +1,8 @@
 .slider-container {
     overflow-x: hidden;
     white-space: nowrap;
+    position: relative;
+
 }
 
 .slider {
@@ -9,7 +11,6 @@ display: flex;
 
 .slide {
 flex: 0 0 auto;
-width: 300px; 
 margin-right: 20px;
 }
 
@@ -32,4 +33,10 @@ width: 100%;
             }
         }
     }
+}
+
+.dots{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
 }

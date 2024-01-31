@@ -1,6 +1,3 @@
-
-
-
 import { Component, OnInit, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -25,8 +22,8 @@ export class LoginComponent implements OnInit{
   router = inject(Router)
   storage = inject(StorageService)
   loginForm : FormGroup = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl(''),
+    email: new FormControl('', [Validators.required, Validators.email, Validators.minLength(5), Validators.maxLength(50)]),
+    password: new FormControl('', [Validators.required, Validators.minLength(5), Validators.maxLength(50)])
   })
   invalidPass: boolean = false
   invalidUser: boolean = false
@@ -57,12 +54,16 @@ export class LoginComponent implements OnInit{
   }
   
 
-  validateUserCredentials(): boolean{
+  
+  validateUserCredentials(): boolean {
     let email: string = this.loginForm.controls['email'].value
     let password: string = this.loginForm.controls['password'].value
 
-    return this.authService.validateUserCredentials(email, password)
-
+    if(!this.authService.validateUserCredentials(email, password)){
+      return false
+    } else {
+      return true
+    }
   }
 
 

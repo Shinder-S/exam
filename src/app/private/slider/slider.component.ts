@@ -2,6 +2,10 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '@/services/api.service';
 
+interface sliderCarousel {
+  imageSrc: string;
+  imageAlt: string;
+}
 @Component({
   selector: 'app-slider',
   standalone: true,
@@ -47,15 +51,32 @@ export class SliderComponent implements OnInit {
     )
   }
 
-  nextSlide() {
+  getSlides(){
+    return this.trendingMovies.map((movie: any)=>{
+      return {
+        imageSrc: `https://image.tmdb.org/t/p/w500${movie.backdrop_path}`,
+        imageAlt: movie.original_title
+      }
+    })
+  }
+
+  nextSlide() { 
     this.slideIndex++;
-    this.slideToCurrent();
+    console.log('entro a next' + this.slideIndex)
+    this.slideToCurrent()
   }
 
   prevSlide() {
     this.slideIndex--;
-    this.slideToCurrent();
+    this.slideToCurrent()
   }
 
-
+  onScroll() {
+    const slideWidth = this.sliderContainer.nativeElement.offsetWidth;
+    const scrollLeft = this.sliderContainer.nativeElement.scrollLeft;
+    const maxScroll = this.sliderContainer.nativeElement.scrollWidth - slideWidth;
+    if (scrollLeft === maxScroll) {
+      this.nextSlide();
+    }
+  }
 }

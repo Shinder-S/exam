@@ -5,11 +5,12 @@ import { Injectable } from '@angular/core';
 })
 export class ApiAuthService {
 
-    validateUserCredentials(email:string, password: string){
+  constructor() { }
 
-        //backend call
+  validateUserCredentials(email:string, password: string){
 
-        return email == 'test@gmail.com' && password == '/Asd1@'
-    }
+    //backend call
 
+    return email == '' && password == '123abc'
+  }
 }
